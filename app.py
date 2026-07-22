@@ -1,3 +1,4 @@
+import os
 import gradio as gr
 import joblib
 import numpy as np
@@ -75,4 +76,9 @@ student_dropout_app = gr.Interface(
     description="Predict whether a student has High or Low Dropout Risk."
 )
 
-student_dropout_app.launch()
+if __name__ == "__main__":
+    student_dropout_app.launch(
+        server_name="0.0.0.0",
+        server_port=int(os.environ.get("PORT", 7861)),
+        footer_links=[],
+    )
